@@ -81,7 +81,7 @@ protected:
 private:
 
 	typedef	FFTReal <DataType>	FftType;
-	typedef	std::auto_ptr <FftType>	FFTRealAPtr;
+	typedef	std::unique_ptr <FftType>	FFTRealAPtr;
 
 	FFTRealAPtr		_fft_aptr;
 	DynArray <DataType>

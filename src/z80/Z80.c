@@ -321,9 +321,9 @@ enum CodesED
   DB_F8,DB_F9,DB_FA,DB_FB,DB_FC,DB_FD,DB_FE,DB_FF
 };
 
-static void CodesCB(register Z80 *R)
+static void CodesCB(Z80 *R)
 {
-  register byte I;
+  byte I;
 
   I=RdZ80(R->PC.W++);
   R->ICount-=CyclesCB[I];
@@ -340,10 +340,10 @@ static void CodesCB(register Z80 *R)
   }
 }
 
-static void CodesDDCB(register Z80 *R)
+static void CodesDDCB(Z80 *R)
 {
-  register pair J;
-  register byte I;
+  pair J;
+  byte I;
 
 #define XX IX    
   J.W=R->XX.W+(offset)RdZ80(R->PC.W++);
@@ -363,10 +363,10 @@ static void CodesDDCB(register Z80 *R)
 #undef XX
 }
 
-static void CodesFDCB(register Z80 *R)
+static void CodesFDCB(Z80 *R)
 {
-  register pair J;
-  register byte I;
+  pair J;
+  byte I;
 
 #define XX IY
   J.W=R->XX.W+(offset)RdZ80(R->PC.W++);
@@ -386,10 +386,10 @@ static void CodesFDCB(register Z80 *R)
 #undef XX
 }
 
-static void CodesED(register Z80 *R)
+static void CodesED(Z80 *R)
 {
-  register byte I;
-  register pair J;
+  byte I;
+  pair J;
 
   I=RdZ80(R->PC.W++);
   R->ICount-=CyclesED[I];
@@ -408,10 +408,10 @@ static void CodesED(register Z80 *R)
   }
 }
 
-static void CodesDD(register Z80 *R)
+static void CodesDD(Z80 *R)
 {
-  register byte I;
-  register pair J;
+  byte I;
+  pair J;
 
 #define XX IX
   I=RdZ80(R->PC.W++);
@@ -435,10 +435,10 @@ static void CodesDD(register Z80 *R)
 #undef XX
 }
 
-static void CodesFD(register Z80 *R)
+static void CodesFD(Z80 *R)
 {
-  register byte I;
-  register pair J;
+  byte I;
+  pair J;
 
 #define XX IY
   I=RdZ80(R->PC.W++);
@@ -494,10 +494,10 @@ void ResetZ80(Z80 *R)
 /** negative, and current register values in R.             **/
 /*************************************************************/
 #ifdef EXECZ80
-int ExecZ80(register Z80 *R,register int RunCycles)
+int ExecZ80(Z80 *R, int RunCycles)
 {
-  register byte I;
-  register pair J;
+  byte I;
+  pair J;
 
   R->ICount=RunCycles; /* Modified by LDS: additional cycles taken by conditional jumps were not counted */
   while(R->ICount>0) /* Modified by LDS */

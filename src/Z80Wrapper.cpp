@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 
-void WrZ80(register word addr,register byte value)
+void WrZ80(word addr, byte value)
 {
 	assert (Z80Wrapper::_cur_cb_ptr != 0);
 
@@ -60,7 +60,7 @@ void WrZ80(register word addr,register byte value)
 
 
 
-byte RdZ80(register word addr)
+byte RdZ80(word addr)
 {
 	assert (Z80Wrapper::_cur_cb_ptr != 0);
 
@@ -69,7 +69,7 @@ byte RdZ80(register word addr)
 
 
 
-void OutZ80(register word port,register byte value)
+void OutZ80(word port, byte value)
 {
 	assert (Z80Wrapper::_cur_cb_ptr != 0);
 
@@ -78,7 +78,7 @@ void OutZ80(register word port,register byte value)
 
 
 
-byte InZ80(register word port)
+byte InZ80(word port)
 {
 	assert (Z80Wrapper::_cur_cb_ptr != 0);
 
@@ -87,14 +87,14 @@ byte InZ80(register word port)
 
 
 
-void PatchZ80(register Z80 *R)
+void PatchZ80(Z80 *R)
 {
 	// Nothing
 }
 
 
 
-word LoopZ80(register Z80 *R)
+word LoopZ80(Z80 *R)
 {
 	return (INT_QUIT);
 }
